@@ -20,31 +20,14 @@ class Puzzle():
         self.input_list = input_text.strip().split('\n')
                 
     def p1(self):
-        self.left_col = []
-        self.right_col = []
-        self.sums = 0
-        for entry in self.input_list:
-            self.left_col.append(entry.split()[0])
-            self.right_col.append(entry.split()[1])
-        self.left_col.sort()
-        self.right_col.sort()
-        for i in range(0,len(self.left_col)):
-            left,right = self.left_col[i],self.right_col[i]
-            this_sum = int(left) - int(right)
-            if this_sum < 0:
-                this_sum *= -1
-            self.sums += this_sum
-            
-        self.p1_solution = self.sums
+        self.left_col, self.right_col = [], []
+        self.p1_solution = 0
+        
         return True
 
     def p2(self):
         self.p2_solution = 0
-        for i in range(0,len(self.left_col)):
-            left = self.left_col[i]
-            count = self.right_col.count(left)
-            score = int(left) * int(count)
-            self.p2_solution += score
+
         return True
 
 def main():
