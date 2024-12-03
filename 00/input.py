@@ -1,2 +1,0 @@
-PUZZLE_INPUT = '''
-'''

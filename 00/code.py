@@ -1,15 +1,6 @@
-from input import *
-from sample import *
-import argparse
+from puzzle_data import *
 from time import time
-import json
-import math
-
-DAY = 0
-
-P1_SAMPLE_SOLUTION = False
-
-P2_SAMPLE_SOLUTION = False
+import re
 
 def elapsed_time(start_time):
     return f"{round(time() - start_time, 8)}s\n"
@@ -18,11 +9,13 @@ class Puzzle():
     def __init__(self,input_text):
         self.input_text = input_text
         self.input_list = input_text.strip().split('\n')
-                
-    def p1(self):
-        self.left_col, self.right_col = [], []
-        self.p1_solution = 0
+    
+    def process_new_input(self):           
+        self.input_list = self.input_text.strip().split('\n')
         
+    def p1(self):
+        self.p1_solution = 0
+            
         return True
 
     def p2(self):
@@ -31,28 +24,10 @@ class Puzzle():
         return True
 
 def main():
-    parser = argparse.ArgumentParser(description=f'AOC2022 Puzzle Day { DAY }')
-    parser.add_argument("-p", "--showpuzzle", help="Display Puzzle Text", action='store_true')
-    parser.add_argument("-s", "--showsample", help="Display Sample Input", action='store_true')
-    args = parser.parse_args()
-    
-    if args.showpuzzle:
-        print(f"###############\nAOC 2022 DAY {DAY} PUZZLE TEXT\n###############")
-        print(PUZZLE_TEXT)
-    
-    if args.showsample:
-        print(f"###############\nAOC 2022 DAY {DAY} SAMPLE INPUT\n###############")
-        print(SAMPLE_INPUT.strip())
-        print(f"\n###############\nAOC 2022 DAY {DAY} P1 SAMPLE SOLUTION\n###############")
-        print(P1_SAMPLE_SOLUTION)
-        print(f"\n###############\nAOC 2022 DAY {DAY} P2 SAMPLE SOLUTION\n###############")
-        print(P2_SAMPLE_SOLUTION)
-    
-
     if P1_SAMPLE_SOLUTION:            
         print("PART 1\nTesting Sample...\n")
         start_time = time()
-        sample = Puzzle(input_text=SAMPLE_INPUT)
+        sample = Puzzle(input_text=P1_SAMPLE_INPUT)
         sample.p1()
         if P1_SAMPLE_SOLUTION == sample.p1_solution:
             print("Sample correct.")
@@ -70,6 +45,9 @@ def main():
     if P2_SAMPLE_SOLUTION:
         print("PART 2\nTesting Sample...\n")
         start_time = time()
+        if P2_SAMPLE_INPUT != False:
+            sample.input_text = P2_SAMPLE_INPUT
+            sample.process_new_input()
         sample.p2()
         if P2_SAMPLE_SOLUTION == sample.p2_solution:
             print("Sample correct.")

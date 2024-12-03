@@ -1,0 +1,17 @@
+DAY = 0
+
+P1_SAMPLE_SOLUTION = False
+
+P2_SAMPLE_SOLUTION = False
+
+P1_SAMPLE_INPUT = '''
+
+'''
+
+P2_SAMPLE_INPUT = '''
+ 
+'''
+
+PUZZLE_INPUT = '''
+
+'''
