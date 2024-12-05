@@ -65,7 +65,6 @@ class Puzzle():
 
     def p2(self):
         self.p2_solution = 0
-        self.page_numbers = list(self.page_numbers)
         
         for update in self.incorrect_updates:
             index = 0
